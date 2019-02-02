@@ -45,7 +45,8 @@
                 case "text":
                     p = document.createElement("p")
                     text = document.createTextNode(meme.value);
-                    kingdom.appendChild(text)
+                    p.appendChild(text)
+                    kingdom.appendChild(p)
             }
         }
     }
