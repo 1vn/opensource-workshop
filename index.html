@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ivan's meme</title>
+</head>
+
+<body>
+    <div id="meme-gate">
+        <input id="meme-request" type="text" />
+        <button id="meme-like-and-subscribe">like and subscribe</button>
+    </div>
+    <div id=" meme-kingdom"></div>
+</body>
+<script>
+    var memes = [
+        "https://pbs.twimg.com/media/DGai-uNUAAAKZc_?format=jpg&name=large",
+    ];
+
+    function gid(id) {
+        return document.getElementById(id)
+    }
+
+    function addMeme(src) {
+        memes.push(src)
+    }
+
+    var kingdom = gid("meme-kingdom")
+    function loadmemes() {
+        for (i = 0; i < memes.length; i++) {
+            img = document.createElement("img")
+            img.src = memes[i]
+            kingdom.appendChild(img)
+        }
+    }
+
+
+    loadmemes();
+</script>
+
+</html>
