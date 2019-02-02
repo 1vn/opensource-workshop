@@ -10,10 +10,6 @@
 
 <body>
     <h1>Ivan's Meme Kingdom</h1>
-    <div id="meme-gate">
-        <input id="meme-request" type="text" />
-        <button id="meme-like-and-subscribe">like and subscribe</button>
-    </div>
     <div id="meme-kingdom"></div>
 </body>
 <script>
@@ -23,22 +19,34 @@
         return document.getElementById(id)
     }
 
-    function addMeme(src) {
-        memes.push(src)
+    function addMeme(value, meme_type) {
+        memes.push({
+            value: value,
+            meme_type: meme_type
+        })
+        loadmemes()
     }
 
+    // spin the meme
     function spin(id) {
         meme = gid(id)
 
-        // spin the meme
     }
 
     var kingdom = gid("meme-kingdom")
     function loadmemes() {
         for (i = 0; i < memes.length; i++) {
-            img = document.createElement("img")
-            img.src = memes[i]
-            kingdom.appendChild(img)
+            meme = memes[i]
+            switch (meme.type) {
+                case "image":
+                    img = document.createElement("img")
+                    img.src = meme.value
+                    kingdom.appendChild(img)
+                case "text":
+                    p = document.createElement("p")
+                    text = document.createTextNode(meme.value);
+                    kingdom.appendChild(text)
+            }
         }
     }
 
