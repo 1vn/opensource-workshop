@@ -30,6 +30,10 @@
 
     var kingdom = gid("meme-kingdom")
     function loadmemes() {
+        while (kingdom.firstChild) {
+            kingdom.removeChild(kingdom.firstChild);
+        }
+
         for (i = 0; i < memes.length; i++) {
             meme = memes[i]
             img = document.createElement("img")
