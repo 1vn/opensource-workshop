@@ -15,7 +15,10 @@
 <script>
     var memes = [
         "memes/gopher-this-is-fine.jpg",
-        "memes/cny-pocket.jpg"
+        "memes/cny-pocket.jpg",
+        "memes/meme1.png",
+        "memes/meme2.jpg",
+        "memes/meme3.jpg",
     ];
 
     function gid(id) {
@@ -39,6 +42,7 @@
             meme = memes[i]
             img = document.createElement("img")
             img.src = meme
+            img.width = 300
             kingdom.appendChild(img)
         }
     }
