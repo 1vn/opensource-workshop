@@ -5,14 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
     <title></title>
 </head>
 
 <body>
     <h1>Meme Kingdom</h1>
     <div id="meme-kingdom"></div>
+    <button onclick="memeShuffle()">Shuffle Memes</button>
 </body>
 <script>
+
+
+    // Create a request variable and assign a new XMLHttpRequest object to it.
+    var request = new XMLHttpRequest();
+
+    // Open a new connection, using the GET request on the URL endpoint
+    request.open('GET', 'https://api.imgflip.com/get_memes', true);
+
+    request.onload = function () {
+        var data = JSON.parse(this.response);
+    }
+
+    // Send request
+    request.send()
+
+    var colors = ['#ff0000', '#00ff00', '#0000ff'];
+    var random_color = colors[Math.floor(Math.random() * colors.length)];
+    document.body.style.backgroundColor = random_color
+
+
     var memes = [
         "memes/gopher-this-is-fine.jpg",
         "memes/meme1.png",
@@ -24,11 +46,24 @@
         return document.getElementById(id)
     }
 
+    function memeShuffle() {
+        var j, x, i;
+        for (i = memes.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = memes[i];
+            memes[i] = memes[j];
+            memes[j] = x;
+        }
+        loadmemes();
+    }
+
+    function shuffle(a) {
+    }
+
 
     // spin the meme
     function spin(id) {
         meme = gid(id)
-
     }
 
     var kingdom = gid("meme-kingdom")
