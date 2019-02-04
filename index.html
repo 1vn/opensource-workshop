@@ -13,19 +13,14 @@
     <div id="meme-kingdom"></div>
 </body>
 <script>
-    var memes = [];
+    var memes = [
+        "memes/gopher-this-is-fine.jpg"
+    ];
 
     function gid(id) {
         return document.getElementById(id)
     }
 
-    function addMeme(value, meme_type) {
-        memes.push({
-            value: value,
-            meme_type: meme_type
-        })
-        loadmemes()
-    }
 
     // spin the meme
     function spin(id) {
@@ -37,20 +32,13 @@
     function loadmemes() {
         for (i = 0; i < memes.length; i++) {
             meme = memes[i]
-            switch (meme.type) {
-                case "image":
-                    img = document.createElement("img")
-                    img.src = meme.value
-                    kingdom.appendChild(img)
-                case "text":
-                    p = document.createElement("p")
-                    text = document.createTextNode(meme.value);
-                    p.appendChild(text)
-                    kingdom.appendChild(p)
-            }
+            img = document.createElement("img")
+            img.src = meme
+            kingdom.appendChild(img)
         }
     }
 
+    loadmemes()
 </script>
 
 </html>
